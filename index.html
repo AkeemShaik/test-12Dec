@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test of 12 december</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: bisque;
+        }
+        
+        button {
+            margin-top: 30px;
+            margin-left: 50px;
+            width: 100px;
+            padding: 5px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="meme_btn" onclick="fetchmeme()">Meme</button>
+    <script>
+        function fetchmeme() {
+            let parentdiv = document.createElement('div')
+            parentdiv.id = 'meme'
+            fetch('https://i.redd.it/fgnpedfokz481.gif')
+                .then(Response => Response.json())
+                .then(body => {
+                    let div = document.createElement('div')
+                    let h4 = document.createElement('h4')
+                    let image = document.createElement('img')
+                    image.src = body.data.children[index].data.url
+                    h4.textContent = body.data.children[index].data.title
+                    div.appendChild(h4)
+                    div.appendChild(image)
+                    parentdiv.appendChild(div)
+
+                })
+        }
+    </script>
+
+</body>
+
+</html>
